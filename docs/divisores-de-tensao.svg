@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="930" viewBox="0 0 1400 930" role="img" aria-labelledby="titulo descricao">
+  <title id="titulo">Divisores de tensão dos dois sinais ECHO</title>
+  <desc id="descricao">Cada ECHO do HC-SR04 chega a um resistor de 1 quilo-ohm. A outra ponta se conecta ao GPIO e a um resistor de 2 quilo-ohms até o GND comum. O sensor azul usa GPIO 18 e o vermelho usa GPIO 26. Os sinais são independentes.</desc>
+  <rect width="1400" height="930" rx="20" fill="#ffffff"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #172b3a; }
+    .titulo { font-size: 34px; font-weight: 700; }
+    .subtitulo { font-size: 21px; fill: #526574; }
+    .canal { font-size: 23px; font-weight: 700; }
+    .rotulo { font-size: 24px; font-weight: 700; }
+    .valor { font-size: 23px; }
+    .nota { font-size: 20px; fill: #526574; }
+    .fio { fill: none; stroke: #263e4c; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    .resistor { fill: #ffffff; stroke: #263e4c; stroke-width: 4; }
+  </style>
+  <text x="48" y="57" class="titulo">Proteção das entradas ECHO</text>
+  <text x="48" y="91" class="subtitulo">Um divisor de tensão para cada sensor · valores nominais para ECHO em 5 V</text>
+
+  <rect x="32" y="118" width="1336" height="344" rx="14" fill="#f7fbff" stroke="#d6e4f0" stroke-width="2"/>
+  <text x="64" y="158" class="canal" style="fill:#12649c">Jogador azul · sensor 1</text>
+  <text x="88" y="201" class="rotulo">ECHO 1</text>
+  <text x="88" y="257" class="nota">HC-SR04 · ≈ 5 V</text>
+  <path d="M 132 222 H 360 M 520 222 H 1260" class="fio"/>
+  <circle cx="132" cy="222" r="6" fill="#263e4c"/>
+  <rect x="360" y="204" width="160" height="36" class="resistor"/>
+  <text x="371" y="188" class="rotulo">R1A · 1 kΩ</text>
+  <circle cx="740" cy="222" r="7" fill="#12649c"/>
+  <path d="M 740 222 V 284 M 740 354 V 388" class="fio"/>
+  <rect x="722" y="284" width="36" height="70" class="resistor"/>
+  <text x="786" y="317" class="rotulo">R2A · 2 kΩ</text>
+  <path d="M 707 388 H 773 M 717 400 H 763 M 729 412 H 751" class="fio"/>
+  <text x="786" y="398" class="nota">GND comum</text>
+  <circle cx="1260" cy="222" r="6" fill="#12649c"/>
+  <text x="1040" y="201" class="rotulo" style="fill:#12649c">GPIO 18</text>
+  <text x="1040" y="257" class="valor">≈ 3,33 V</text>
+
+  <rect x="32" y="494" width="1336" height="344" rx="14" fill="#fff8f8" stroke="#ecd9dd" stroke-width="2"/>
+  <text x="64" y="534" class="canal" style="fill:#aa4053">Jogador vermelho · sensor 2</text>
+  <text x="88" y="577" class="rotulo">ECHO 2</text>
+  <text x="88" y="633" class="nota">HC-SR04 · ≈ 5 V</text>
+  <path d="M 132 598 H 360 M 520 598 H 1260" class="fio"/>
+  <circle cx="132" cy="598" r="6" fill="#263e4c"/>
+  <rect x="360" y="580" width="160" height="36" class="resistor"/>
+  <text x="371" y="564" class="rotulo">R1B · 1 kΩ</text>
+  <circle cx="740" cy="598" r="7" fill="#aa4053"/>
+  <path d="M 740 598 V 660 M 740 730 V 764" class="fio"/>
+  <rect x="722" y="660" width="36" height="70" class="resistor"/>
+  <text x="786" y="693" class="rotulo">R2B · 2 kΩ</text>
+  <path d="M 707 764 H 773 M 717 776 H 763 M 729 788 H 751" class="fio"/>
+  <text x="786" y="774" class="nota">GND comum</text>
+  <circle cx="1260" cy="598" r="6" fill="#aa4053"/>
+  <text x="1040" y="577" class="rotulo" style="fill:#aa4053">GPIO 26</text>
+  <text x="1040" y="633" class="valor">≈ 3,33 V</text>
+
+  <text x="48" y="879" class="nota">R1 liga o ECHO à junção de leitura. R2 liga essa junção ao GND.</text>
+  <text x="48" y="911" class="nota">Os GNDs são interligados ao ESP32. As duas saídas ECHO permanecem separadas.</text>
+</svg>

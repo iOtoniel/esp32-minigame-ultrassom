@@ -1,0 +1,18 @@
+# Arquivos gerados durante compilação e testes
+*.o
+*.elf
+*.bin
+*.map
+firmware-test
+firmware-test.exe
+
+# Ambientes locais
+.pio/
+.vscode/
+__pycache__/
+*.pyc
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+*.tmp

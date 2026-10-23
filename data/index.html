@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1120">
+  <title>ESP32 Arcade — Duelo de Goleiros</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/game.js" defer></script>
+</head>
+<body>
+  <main class="painel">
+    <header class="topo">
+      <div><span class="sobretitulo">ESP32 ARCADE</span><h1>Duelo de Goleiros <span>⚽</span></h1><p>Dois sensores • dois jogadores • uma bolinha</p></div>
+      <div class="rede" id="rede">Conectando...</div>
+    </header>
+
+    <section class="placar" aria-label="Placar da partida">
+      <div class="equipe azul"><span>AZUL · EMBAIXO</span><strong id="pontos0">0</strong></div>
+      <div class="meio">PRIMEIRO A <strong>7</strong></div>
+      <div class="equipe vermelho"><span>VERMELHO · EM CIMA</span><strong id="pontos1">0</strong></div>
+    </section>
+
+    <section class="arena" aria-label="Campo de futebol e jogo de goleiros">
+      <canvas id="jogo" width="360" height="540" aria-label="Partida de goleiros"></canvas>
+      <div class="avisoGol" id="avisoGol" hidden></div>
+      <div class="overlay" id="overlay">
+        <h2 id="titulo">Prontos para jogar?</h2>
+        <p id="mensagem">Posicione as mãos e inicie. Sem leitura, o goleiro mantém a posição e o jogo continua.</p>
+        <button id="comecar" disabled>Iniciar partida</button>
+      </div>
+    </section>
+
+    <div class="acoes"><button class="secundario" id="reiniciar">Reiniciar partida</button><span class="statusGeral" id="statusGeral">Aguardando sensores...</span></div>
+
+    <section class="jogadores">
+      <article class="cartao jogador0">
+        <div class="cabecalhoJogador"><strong><span class="indicador"></span> Goleiro azul</strong><span id="status0">Aguardando</span></div>
+        <div class="medida"><strong id="cm0">--</strong> <span>cm</span></div>
+        <label class="respostaDireta"><input type="checkbox" id="direto0" checked> Resposta direta</label>
+        <p class="modoControle" id="modo0"></p>
+        <p class="telemetria" id="telemetria0"></p>
+        <div class="nivel"><label for="sens0">Sensibilidade</label><strong id="nivel0">6</strong></div>
+        <input type="range" id="sens0" min="1" max="10" value="6">
+        <div class="extremos"><span>Mais suave</span><span>Mais rápido</span></div>
+        <details id="cal0"><summary>Calibração e direção</summary>
+          <p>Aproxime a mão e capture o limite perto; afaste e capture o limite longe.</p>
+          <div class="calGrade"><div><small>Perto</small><strong id="min0">10,0 cm</strong><button id="capturarMin0">Capturar perto</button></div><div><small>Longe</small><strong id="max0">30,0 cm</strong><button id="capturarMax0">Capturar longe</button></div></div>
+          <label class="inverter"><input type="checkbox" id="inverter0"> Inverter esquerda/direita</label>
+          <div class="regua"><div id="marcador0"></div></div><div class="extremos"><span>Esquerda</span><span>Direita</span></div>
+          <button class="secundario redefinir" id="padrao0">Restaurar 10–30 cm</button>
+          <p class="feedback" id="feedback0" aria-live="polite"></p>
+        </details>
+      </article>
+      <article class="cartao jogador1">
+        <div class="cabecalhoJogador"><strong><span class="indicador"></span> Goleiro vermelho</strong><span id="status1">Aguardando</span></div>
+        <div class="medida"><strong id="cm1">--</strong> <span>cm</span></div>
+        <label class="respostaDireta"><input type="checkbox" id="direto1" checked> Resposta direta</label>
+        <p class="modoControle" id="modo1"></p>
+        <p class="telemetria" id="telemetria1"></p>
+        <div class="nivel"><label for="sens1">Sensibilidade</label><strong id="nivel1">6</strong></div>
+        <input type="range" id="sens1" min="1" max="10" value="6">
+        <div class="extremos"><span>Mais suave</span><span>Mais rápido</span></div>
+        <details id="cal1"><summary>Calibração e direção</summary>
+          <p>Aproxime a mão e capture o limite perto; afaste e capture o limite longe.</p>
+          <div class="calGrade"><div><small>Perto</small><strong id="min1">10,0 cm</strong><button id="capturarMin1">Capturar perto</button></div><div><small>Longe</small><strong id="max1">30,0 cm</strong><button id="capturarMax1">Capturar longe</button></div></div>
+          <label class="inverter"><input type="checkbox" id="inverter1"> Inverter esquerda/direita</label>
+          <div class="regua"><div id="marcador1"></div></div><div class="extremos"><span>Esquerda</span><span>Direita</span></div>
+          <button class="secundario redefinir" id="padrao1">Restaurar 10–30 cm</button>
+          <p class="feedback" id="feedback1" aria-live="polite"></p>
+        </details>
+      </article>
+    </section>
+    <section id="demo" class="demo" hidden><h2>Simulador sem sensores</h2><p>Para testar a interface no computador. Não controla o ESP32.</p><label>Azul <input id="demo0" type="range" min="3" max="55" value="20"></label><label>Vermelho <input id="demo1" type="range" min="3" max="55" value="20"></label></section>
+    <footer>Sem leitura do sensor, o goleiro mantém a posição e a partida continua. A calibração fica salva neste navegador. <a href="/upload">Gerenciar arquivos</a></footer>
+  </main>
+</body>
+</html>
